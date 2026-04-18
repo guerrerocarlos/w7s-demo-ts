@@ -1,0 +1,9 @@
+[
+  {
+    "type": "webhook",
+    "path": "/api/hello",
+    "method": "GET",
+    "handler": "./backend/hello.ts",
+    "auth": "none"
+  }
+]
