@@ -1,3 +1,6 @@
+// Method: ANY
+// Path: /api/hello
+// Auth: none
 export default async function handle() {
   return {
     status: 200,

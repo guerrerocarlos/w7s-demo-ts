@@ -5,6 +5,7 @@ Minimal W7S mixed-mode demo:
 - `backend/` contains interpreter-backed routes
 - `worker/` contains the isolate worker
 - `frontend/` contains the frontend shell mirrored by the worker
+- `backend/hello.ts` declares its route with inline metadata comments
 - `DEMO_VERSION` tracks manual verification bumps
 
 Deployed behavior:
