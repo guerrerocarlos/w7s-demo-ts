@@ -3,7 +3,7 @@ const FRONTEND_HTML = `<!doctype html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>W7S Demo</title>
+    <title>W7S Demo TS</title>
     <style>
       :root {
         color-scheme: light;
@@ -40,11 +40,11 @@ const FRONTEND_HTML = `<!doctype html>
   <body>
     <main>
       <section class="hero">
-        <span class="eyebrow">W7S Demo</span>
-        <h1>Interpreter, isolate, and frontend in one repo.</h1>
+        <span class="eyebrow">W7S Demo TS</span>
+        <h1>Prebuilt interpreter and isolate outputs.</h1>
         <p class="lede">
-          This page is served by the isolate worker. The cards below probe both the interpreter-backed
-          backend route and the isolate-only edge route through the same public repo URL.
+          This repo keeps TypeScript as source, but GitHub Actions builds the backend and worker
+          before deploy so the runtime can consume ready-to-run JavaScript outputs.
         </p>
       </section>
       <section class="grid">
@@ -90,7 +90,12 @@ renderJson("./api/hello", "backend-result");
 renderJson("./edge", "edge-result");
 `;
 
-const json = (payload, init) =>
+type JsonInit = {
+  status?: number;
+  headers?: HeadersInit;
+};
+
+const json = (payload: unknown, init?: JsonInit) =>
   new Response(JSON.stringify(payload, null, 2), {
     status: init?.status ?? 200,
     headers: {
@@ -100,14 +105,14 @@ const json = (payload, init) =>
   });
 
 export default {
-  async fetch(request) {
+  async fetch(request: Request): Promise<Response> {
     const url = new URL(request.url);
 
     if (url.pathname === "/edge") {
       return json({
         runtime: "isolate",
         route: "/edge",
-        message: "Hello from the isolate worker.",
+        message: "Hello from the isolate worker TypeScript build.",
         ok: true
       });
     }

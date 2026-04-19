@@ -1,0 +1,14 @@
+{
+  "name": "w7s-demo-ts",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run build:backend && npm run build:worker",
+    "build:backend": "mkdir -p backend/dist && esbuild backend/hello.ts --platform=node --format=cjs --target=es2020 --outfile=backend/dist/hello.js",
+    "build:worker": "esbuild worker/index.ts --bundle --format=esm --platform=browser --target=es2022 --outfile=worker/index.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.4",
+    "typescript": "^5.9.3"
+  }
+}

@@ -22,6 +22,12 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build backend+worker
+        run: npm run build
+
       - name: Deploy backend+worker scope
         shell: bash
         env:
@@ -47,7 +53,7 @@ jobs:
           archive_path="$RUNNER_TEMP/backend-worker-deploy.zip"
           response_body="$RUNNER_TEMP/backend-worker-deploy-response.json"
 
-          zip -qr "$archive_path" . -x ".git/*"
+          zip -qr "$archive_path" . -x ".git/*" "node_modules/*"
 
           http_status="$(curl -sS -o "$response_body" -w "%{http_code}" \
             -X POST "$deploy_url" \
@@ -132,7 +138,7 @@ jobs:
           archive_path="$RUNNER_TEMP/frontend-deploy.zip"
           response_body="$RUNNER_TEMP/frontend-deploy-response.json"
 
-          zip -qr "$archive_path" . -x ".git/*"
+          zip -qr "$archive_path" . -x ".git/*" "node_modules/*"
 
           http_status="$(curl -sS -o "$response_body" -w "%{http_code}" \
             -X POST "$deploy_url" \
