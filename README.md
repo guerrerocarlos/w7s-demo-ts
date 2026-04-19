@@ -15,6 +15,6 @@ Deployed behavior:
 
 - `/api/hello` resolves through the interpreter
 - `/edge` resolves through the isolate worker
-- `/` resolves through the isolate worker and renders the demo frontend
+- `/` resolves through static site hosting and renders the demo frontend
 
 Current `DEMO_VERSION`: `2026-04-19-ts-build-1`

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>W7S Demo</title>
+    <title>W7S Demo TS Static</title>
     <style>
       :root {
         color-scheme: light;
@@ -108,19 +108,19 @@
   <body>
     <main>
       <section class="hero">
-        <span class="eyebrow">W7S Demo</span>
-        <h1>Interpreter, isolate, and frontend in one repo.</h1>
+        <span class="eyebrow">W7S Demo TS Static</span>
+        <h1>Static frontend, interpreter backend, isolate edge.</h1>
         <p class="lede">
-          This page is served by the isolate worker. The cards below probe both the interpreter-backed
-          backend route and the isolate-only edge route through the same public repo URL.
+          STATIC FRONTEND MARKER. This page should be served by W7S static hosting after isolate
+          returns a miss for frontend paths.
         </p>
       </section>
 
       <section class="grid">
         <article class="card">
           <span class="pill">Frontend</span>
-          <h2>Served by `worker/`</h2>
-          <p class="muted">This HTML shell is returned by the isolate worker at `/`.</p>
+          <h2>Served by `frontend/dist`</h2>
+          <p class="muted">If you can read STATIC FRONTEND MARKER, static hosting handled `/`.</p>
         </article>
 
         <article class="card">
@@ -133,7 +133,7 @@
         <article class="card">
           <span class="pill">Isolate</span>
           <h2>`/edge`</h2>
-          <p class="muted">Isolate worker result:</p>
+          <p class="muted">Isolate worker result with WORKER EDGE MARKER:</p>
           <pre id="edge-result">Loading...</pre>
         </article>
       </section>
